@@ -1,23 +1,31 @@
 
 module top (
-    input   logic[0:0]  diff_clock_rtl_0_clk_n,
-    input   logic[0:0]  diff_clock_rtl_0_clk_p,
-    input   logic[3:0]  pcie_7x_mgt_rtl_0_rxn,
-    input   logic[3:0]  pcie_7x_mgt_rtl_0_rxp,
-    output  logic[3:0]  pcie_7x_mgt_rtl_0_txn,
-    output  logic[3:0]  pcie_7x_mgt_rtl_0_txp,
-    input   logic       reset_rtl_0
+    output  logic[3:0]  ledn,
+    //
+    input   logic       pcie_clkin_clk_n,
+    input   logic       pcie_clkin_clk_p,
+    input   logic[3:0]  pcie_mgt_rxn,
+    input   logic[3:0]  pcie_mgt_rxp,
+    output  logic[3:0]  pcie_mgt_txn,
+    output  logic[3:0]  pcie_mgt_txp,
+    input   logic       pcie_reset,
+    output  logic       pcie_clkreq_l
 );
 
     system system_i(
-        .diff_clock_rtl_0_clk_n(diff_clock_rtl_0_clk_n),
-        .diff_clock_rtl_0_clk_p(diff_clock_rtl_0_clk_p),
-        .pcie_7x_mgt_rtl_0_rxn(pcie_7x_mgt_rtl_0_rxn),
-        .pcie_7x_mgt_rtl_0_rxp(pcie_7x_mgt_rtl_0_rxp),
-        .pcie_7x_mgt_rtl_0_txn(pcie_7x_mgt_rtl_0_txn),
-        .pcie_7x_mgt_rtl_0_txp(pcie_7x_mgt_rtl_0_txp),
-        .reset_rtl_0(reset_rtl_0)
+        .pcie_clkin_clk_n(pcie_clkin_clk_n),
+        .pcie_clkin_clk_p(pcie_clkin_clk_p),
+        .pcie_mgt_rxn(pcie_mgt_rxn),
+        .pcie_mgt_rxp(pcie_mgt_rxp),
+        .pcie_mgt_txn(pcie_mgt_txn),
+        .pcie_mgt_txp(pcie_mgt_txp),
+        .pcie_reset(pcie_reset)
     );
+    
+    assign pcie_clkreq_l = 1'b0;
+
+    logic[3:0] led = 4'b1111;    
+    assign ledn = ~led;
 
 endmodule
 

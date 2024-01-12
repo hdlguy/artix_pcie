@@ -2,7 +2,7 @@
 close_project -quiet
 file delete -force proj.xpr *.os *.jou *.log proj.srcs proj.cache proj.runs
 #
-create_project -part xc7a50tfgg484-2 -force proj 
+create_project -part xc7a100tfgg484-2 -force proj 
 set_property target_language Verilog [current_project]
 set_property default_lib work [current_project]
 load_features ipintegrator
