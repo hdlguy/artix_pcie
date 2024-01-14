@@ -17,6 +17,7 @@ set_property synth_checkpoint_mode None    [get_files ./proj.srcs/sources_1/bd/s
 
 #read_verilog -sv ../source/axi_regfile/axi_regfile_v1_0_S00_AXI.sv
 
+read_verilog -sv ../source/axi_regfile/axi_regfile_v1_0_S00_AXI.sv
 read_verilog -sv ../source/top.sv
 
 read_xdc ../source/top.xdc
