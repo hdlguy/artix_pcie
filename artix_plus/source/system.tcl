@@ -214,18 +214,18 @@ proc create_root_design { parentCell } {
   # Create instance: xdma_0, and set properties
   set xdma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xdma:4.1 xdma_0 ]
   set_property -dict [list \
-    CONFIG.PF0_DEVICE_ID_mqdma {9044} \
-    CONFIG.PF0_SRIOV_VF_DEVICE_ID {A044} \
-    CONFIG.PF2_DEVICE_ID_mqdma {9244} \
-    CONFIG.PF3_DEVICE_ID_mqdma {9344} \
-    CONFIG.PHY_LP_TXPRESET {5} \
+    CONFIG.PF0_DEVICE_ID_mqdma {9038} \
+    CONFIG.PF0_SRIOV_VF_DEVICE_ID {A038} \
+    CONFIG.PF2_DEVICE_ID_mqdma {9238} \
+    CONFIG.PF3_DEVICE_ID_mqdma {9338} \
+    CONFIG.PHY_LP_TXPRESET {4} \
     CONFIG.axi_data_width {256_bit} \
     CONFIG.axilite_master_en {true} \
     CONFIG.axisten_freq {250} \
     CONFIG.mode_selection {Basic} \
-    CONFIG.pf0_device_id {9044} \
-    CONFIG.pl_link_cap_max_link_speed {16.0_GT/s} \
-    CONFIG.pl_link_cap_max_link_width {X4} \
+    CONFIG.pf0_device_id {9038} \
+    CONFIG.pl_link_cap_max_link_speed {8.0_GT/s} \
+    CONFIG.pl_link_cap_max_link_width {X8} \
     CONFIG.xdma_axi_intf_mm {AXI_Memory_Mapped} \
     CONFIG.xdma_rnum_chnl {4} \
     CONFIG.xdma_wnum_chnl {4} \

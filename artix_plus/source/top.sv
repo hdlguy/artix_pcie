@@ -3,10 +3,10 @@ module top(
     // pcie
     input   logic [0:0]     diff_clock_rtl_0_clk_n,
     input   logic [0:0]     diff_clock_rtl_0_clk_p,
-    input   logic [3:0]     pcie_7x_mgt_rtl_0_rxn,
-    input   logic [3:0]     pcie_7x_mgt_rtl_0_rxp,
-    output  logic [3:0]     pcie_7x_mgt_rtl_0_txn,
-    output  logic [3:0]     pcie_7x_mgt_rtl_0_txp,
+    input   logic [7:0]     pcie_7x_mgt_rtl_0_rxn,
+    input   logic [7:0]     pcie_7x_mgt_rtl_0_rxp,
+    output  logic [7:0]     pcie_7x_mgt_rtl_0_txn,
+    output  logic [7:0]     pcie_7x_mgt_rtl_0_txp,
     input   logic           reset_rtl_0,
     //
     //input   logic           clkin_p, clkin_n,
