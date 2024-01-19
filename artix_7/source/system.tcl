@@ -212,7 +212,6 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.ADDR_WIDTH {31} \
    CONFIG.DATA_WIDTH {32} \
-   CONFIG.FREQ_HZ {125000000} \
    CONFIG.HAS_BURST {0} \
    CONFIG.HAS_CACHE {0} \
    CONFIG.HAS_LOCK {0} \
@@ -229,17 +228,22 @@ proc create_root_design { parentCell } {
   set_property -dict [ list \
    CONFIG.POLARITY {ACTIVE_LOW} \
  ] $pcie_reset
+  set axi_aclk [ create_bd_port -dir O -type clk axi_aclk ]
+  set_property -dict [ list \
+   CONFIG.ASSOCIATED_BUSIF {M02} \
+ ] $axi_aclk
+  set axi_aresetn [ create_bd_port -dir O -type rst axi_aresetn ]
 
   # Create instance: xdma_0, and set properties
   set xdma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xdma:4.1 xdma_0 ]
   set_property -dict [list \
-    CONFIG.axi_data_width {128_bit} \
+    CONFIG.axi_data_width {64_bit} \
     CONFIG.axilite_master_en {true} \
     CONFIG.axisten_freq {125} \
     CONFIG.cfg_mgmt_if {false} \
     CONFIG.pf0_msi_enabled {false} \
     CONFIG.pl_link_cap_max_link_speed {5.0_GT/s} \
-    CONFIG.pl_link_cap_max_link_width {X4} \
+    CONFIG.pl_link_cap_max_link_width {X1} \
     CONFIG.xdma_axi_intf_mm {AXI_Memory_Mapped} \
     CONFIG.xdma_rnum_chnl {2} \
     CONFIG.xdma_wnum_chnl {2} \
@@ -294,8 +298,8 @@ proc create_root_design { parentCell } {
   connect_bd_net -net axi_quad_spi_0_ip2intc_irpt [get_bd_pins axi_quad_spi_0/ip2intc_irpt] [get_bd_pins xlconcat_0/In0]
   connect_bd_net -net reset_rtl_0_1 [get_bd_ports pcie_reset] [get_bd_pins xdma_0/sys_rst_n]
   connect_bd_net -net util_ds_buf_IBUF_OUT [get_bd_pins util_ds_buf/IBUF_OUT] [get_bd_pins xdma_0/sys_clk]
-  connect_bd_net -net xdma_0_axi_aclk [get_bd_pins xdma_0/axi_aclk] [get_bd_pins axi_smc/aclk] [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_pins axi_quad_spi_0/s_axi_aclk] [get_bd_pins axi_quad_spi_0/ext_spi_clk]
-  connect_bd_net -net xdma_0_axi_aresetn [get_bd_pins xdma_0/axi_aresetn] [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn] [get_bd_pins axi_smc/aresetn] [get_bd_pins axi_quad_spi_0/s_axi_aresetn]
+  connect_bd_net -net xdma_0_axi_aclk [get_bd_pins xdma_0/axi_aclk] [get_bd_pins axi_smc/aclk] [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_pins axi_quad_spi_0/s_axi_aclk] [get_bd_pins axi_quad_spi_0/ext_spi_clk] [get_bd_ports axi_aclk]
+  connect_bd_net -net xdma_0_axi_aresetn [get_bd_pins xdma_0/axi_aresetn] [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn] [get_bd_pins axi_smc/aresetn] [get_bd_pins axi_quad_spi_0/s_axi_aresetn] [get_bd_ports axi_aresetn]
   connect_bd_net -net xlconcat_0_dout [get_bd_pins xlconcat_0/dout] [get_bd_pins xdma_0/usr_irq_req]
 
   # Create address segments

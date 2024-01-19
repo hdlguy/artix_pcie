@@ -8,10 +8,10 @@ module top (
     //
     input   logic       pcie_clkin_clk_n,
     input   logic       pcie_clkin_clk_p,
-    input   logic[3:0]  pcie_mgt_rxn,
-    input   logic[3:0]  pcie_mgt_rxp,
-    output  logic[3:0]  pcie_mgt_txn,
-    output  logic[3:0]  pcie_mgt_txp,
+    input   logic[0:0]  pcie_mgt_rxn,
+    input   logic[0:0]  pcie_mgt_rxp,
+    output  logic[0:0]  pcie_mgt_txn,
+    output  logic[0:0]  pcie_mgt_txp,
     input   logic       pcie_reset,
     output  logic       pcie_clkreq_l,
     //
@@ -46,6 +46,7 @@ module top (
     logic           M02_AXI_wready;
     logic [3:0]     M02_AXI_wstrb;
     logic           M02_AXI_wvalid;
+    logic           axi_aclk, axi_aresetn;
    
 
     system system_i(
@@ -57,6 +58,8 @@ module top (
         .pcie_mgt_txp       (pcie_mgt_txp),
         .pcie_reset         (pcie_reset),
         //
+        .axi_aclk           (axi_aclk),
+        .axi_aresetn        (axi_aresetn),
         .M02_araddr         (M02_araddr),
         .M02_arprot         (M02_arprot),
         .M02_arready        (M02_arready),
@@ -103,7 +106,7 @@ module top (
     assign pcie_clkreq_l = 1'b0;
 
     logic clk;
-    IBUFDS #(.DIFF_TERM("FALSE"), .IBUF_LOW_PWR("TRUE"), .IOSTANDARD("DEFAULT")) IBUFDS_inst (.O(clk), .I(sysclk_p), .IB(sysclk_n));
+    IBUFDS #(.DIFF_TERM("TRUE"), .IBUF_LOW_PWR("TRUE"), .IOSTANDARD("DEFAULT")) IBUFDS_inst (.O(clk), .I(sysclk_p), .IB(sysclk_n));
     
     logic[3:0] led;
     logic[27:0] led_count;
