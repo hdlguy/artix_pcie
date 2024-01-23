@@ -8,10 +8,10 @@ module top (
     //
     input   logic       pcie_clkin_clk_n,
     input   logic       pcie_clkin_clk_p,
-    input   logic[0:0]  pcie_mgt_rxn,
-    input   logic[0:0]  pcie_mgt_rxp,
-    output  logic[0:0]  pcie_mgt_txn,
-    output  logic[0:0]  pcie_mgt_txp,
+    input   logic[3:0]  pcie_mgt_rxn,
+    input   logic[3:0]  pcie_mgt_rxp,
+    output  logic[3:0]  pcie_mgt_txn,
+    output  logic[3:0]  pcie_mgt_txp,
     input   logic       pcie_reset,
     output  logic       pcie_clkreq_l,
     //
