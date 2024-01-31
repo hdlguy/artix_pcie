@@ -14,7 +14,7 @@ refresh_hw_device [current_hw_device]
 
 create_hw_bitstream -hw_device [get_hw_devices] [get_property PROGRAM.HW_CFGMEM_BITFILE [current_hw_device]];
 
-create_hw_cfgmem -hw_device [current_hw_device] -mem_dev [lindex [get_cfgmem_parts {s25fl128sxxxxxx0-spi-x1_x2_x4}] 0]
+create_hw_cfgmem -hw_device [current_hw_device] -mem_dev [lindex [get_cfgmem_parts {s25fl256sxxxxxx0-spi-x1_x2_x4}] 0]
 
 set_property PROGRAM.ADDRESS_RANGE  {use_file}              [ get_property PROGRAM.HW_CFGMEM [current_hw_device]]
 set_property PROGRAM.FILES [list "./results/top.mcs" ]      [ get_property PROGRAM.HW_CFGMEM [current_hw_device]]

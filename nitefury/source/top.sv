@@ -56,29 +56,29 @@ module top (
         .pcie_mgt_rxp       (pcie_mgt_rxp),
         .pcie_mgt_txn       (pcie_mgt_txn),
         .pcie_mgt_txp       (pcie_mgt_txp),
-        .pcie_reset         (pcie_reset),
+        .pcie_reset         (pcie_reset),     
         //
         .axi_aclk           (axi_aclk),
         .axi_aresetn        (axi_aresetn),
-        .M02_araddr         (M02_araddr),
-        .M02_arprot         (M02_arprot),
-        .M02_arready        (M02_arready),
-        .M02_arvalid        (M02_arvalid),
-        .M02_awaddr         (M02_awaddr),
-        .M02_awprot         (M02_awprot),
-        .M02_awready        (M02_awready),
-        .M02_awvalid        (M02_awvalid),
-        .M02_bready         (M02_bready),
-        .M02_bresp          (M02_bresp),
-        .M02_bvalid         (M02_bvalid),
-        .M02_rdata          (M02_rdata),
-        .M02_rready         (M02_rready),
-        .M02_rresp          (M02_rresp),
-        .M02_rvalid         (M02_rvalid),
-        .M02_wdata          (M02_wdata),
-        .M02_wready         (M02_wready),
-        .M02_wstrb          (M02_wstrb),
-        .M02_wvalid         (M02_wvalid),        
+        .M02_araddr         (M02_AXI_araddr),
+        .M02_arprot         (M02_AXI_arprot),
+        .M02_arready        (M02_AXI_arready),
+        .M02_arvalid        (M02_AXI_arvalid),
+        .M02_awaddr         (M02_AXI_awaddr),
+        .M02_awprot         (M02_AXI_awprot),
+        .M02_awready        (M02_AXI_awready),
+        .M02_awvalid        (M02_AXI_awvalid),
+        .M02_bready         (M02_AXI_bready),
+        .M02_bresp          (M02_AXI_bresp),
+        .M02_bvalid         (M02_AXI_bvalid),
+        .M02_rdata          (M02_AXI_rdata),
+        .M02_rready         (M02_AXI_rready),
+        .M02_rresp          (M02_AXI_rresp),
+        .M02_rvalid         (M02_AXI_rvalid),
+        .M02_wdata          (M02_AXI_wdata),
+        .M02_wready         (M02_AXI_wready),
+        .M02_wstrb          (M02_AXI_wstrb),
+        .M02_wvalid         (M02_AXI_wvalid),        
         //
         .qspi_io0_i         (qspi_io0_i),
         .qspi_io0_o         (qspi_io0_o),
@@ -110,8 +110,13 @@ module top (
     
     logic[3:0] led;
     logic[27:0] led_count;
-    always_ff @(posedge clk) begin
-        led_count <= led_count + 1;
+    always_ff @(posedge axi_aclk) begin
+        if (pcie_reset==0) begin
+            led_count <= 0;
+        end else begin
+            led_count <= led_count + 1;
+        end
+//        led_count <= led_count + 1;
         led <= led_count[27:24];
     end    
     assign ledn = ~led;
