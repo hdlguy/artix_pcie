@@ -22,7 +22,8 @@ module top (
     inout   logic       qspi_ss_io
 );
 
-    logic qspi_io0_i, qspi_io0_o, qspi_io1_t;
+    logic qspi_io0_i, qspi_io0_o, qspi_io0_t;
+    logic qspi_io1_i, qspi_io1_o, qspi_io1_t;
     logic qspi_io2_i, qspi_io2_o, qspi_io2_t;
     logic qspi_io3_i, qspi_io3_o, qspi_io3_t;
     logic qspi_ss_i,  qspi_ss_o,  qspi_ss_t;
