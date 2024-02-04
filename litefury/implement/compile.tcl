@@ -17,20 +17,20 @@ report_utilization      -file   ./results/utilization.rpt
 report_io               -file   ./results/io.rpt
 write_debug_probes      -force  ./results/top.ltx
 
-#set_property CFGBVS VCCO [current_design]
-#set_property CONFIG_VOLTAGE 3.3 [current_design]
-#set_property BITSTREAM.CONFIG.CONFIGRATE 3 [current_design]
-#set_property BITSTREAM.Config.SPI_BUSWIDTH 4 [current_design]
-#set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
-
-set_property BITSTREAM.CONFIG.OVERTEMPPOWERDOWN ENABLE [current_design]
-set_property BITSTREAM.CONFIG.EXTMASTERCCLK_EN Div-1 [current_design]
-set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 4 [current_design]
-set_property CONFIG_MODE SPIx4 [current_design]
-set_property BITSTREAM.CONFIG.SPI_FALL_EDGE YES [current_design]
-set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
-set_property CONFIG_VOLTAGE 3.3 [current_design]
 set_property CFGBVS VCCO [current_design]
+set_property CONFIG_VOLTAGE 3.3 [current_design]
+set_property BITSTREAM.CONFIG.CONFIGRATE 3 [current_design]
+set_property BITSTREAM.Config.SPI_BUSWIDTH 4 [current_design]
+set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
+
+#set_property BITSTREAM.CONFIG.OVERTEMPPOWERDOWN ENABLE [current_design]
+#set_property BITSTREAM.CONFIG.EXTMASTERCCLK_EN Div-1 [current_design]
+#set_property BITSTREAM.CONFIG.SPI_BUSWIDTH 4 [current_design]
+#set_property CONFIG_MODE SPIx4 [current_design]
+#set_property BITSTREAM.CONFIG.SPI_FALL_EDGE YES [current_design]
+#set_property BITSTREAM.GENERAL.COMPRESS TRUE [current_design]
+#set_property CONFIG_VOLTAGE 3.3 [current_design]
+#set_property CFGBVS VCCO [current_design]
 
 write_bitstream -verbose -force ./results/top.bit
 

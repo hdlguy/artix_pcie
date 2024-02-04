@@ -1,4 +1,4 @@
-
+// this is a simple design to verify that the pcie reference clock and pcie reset are received by the fpga.
 module top (
     input   logic       pcie_clkin_clk_p, pcie_clkin_clk_n,
     input   logic       pcie_reset,
