@@ -234,13 +234,13 @@ proc create_root_design { parentCell } {
   # Create instance: xdma_0, and set properties
   set xdma_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xdma:4.1 xdma_0 ]
   set_property -dict [list \
-    CONFIG.axi_data_width {128_bit} \
+    CONFIG.axi_data_width {64_bit} \
     CONFIG.axilite_master_en {true} \
     CONFIG.axisten_freq {125} \
     CONFIG.cfg_mgmt_if {false} \
     CONFIG.pf0_msi_enabled {false} \
     CONFIG.pl_link_cap_max_link_speed {5.0_GT/s} \
-    CONFIG.pl_link_cap_max_link_width {X4} \
+    CONFIG.pl_link_cap_max_link_width {X1} \
     CONFIG.xdma_axi_intf_mm {AXI_Memory_Mapped} \
     CONFIG.xdma_rnum_chnl {2} \
     CONFIG.xdma_wnum_chnl {2} \
