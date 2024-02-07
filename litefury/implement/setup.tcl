@@ -15,14 +15,11 @@ source ../source/system.tcl
 generate_target {synthesis implementation} [get_files ./proj.srcs/sources_1/bd/system/system.bd]
 set_property synth_checkpoint_mode None    [get_files ./proj.srcs/sources_1/bd/system/system.bd]
 
-#read_verilog -sv ../source/axi_regfile/axi_regfile_v1_0_S00_AXI.sv
-
 read_verilog -sv ../source/axi_regfile/axi_regfile_v1_0_S00_AXI.sv
 read_verilog -sv ../source/top.sv
 
 read_xdc ../source/top.xdc
-read_xdc ../source/late.xdc
-set_property used_in_synthesis false [get_files ../source/late.xdc]
+#set_property PROCESSING_ORDER EARLY ../source/top.xdc
 
 close_project
 
