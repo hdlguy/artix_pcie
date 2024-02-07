@@ -15,6 +15,8 @@ vivado -mode batch -source compile.tcl
 vivado -mode batch -source spi_program.tcl
 
 # Test
+<img src="IMG_20240207_075841590.jpg">
+
     lspci
 
 
