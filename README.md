@@ -8,6 +8,13 @@ The PCIe lanes are wired in a non-standard way on this board. TCL reset_property
 - litefury - a minimal pcie design that enumerates
 - clock_reset_test - a tiny design that verifies the pcie reference clock and reset
 
+## Compilation
+cd litefury/implement
+vivado -mode batch -source setup.tcl
+vivado -mode batch -source compile.tcl
+vivado -mode batch -source spi_program.tcl
 
+# Test
+    lspci
 
 
