@@ -15,6 +15,7 @@ The PCIe lanes are wired in a non-standard way on this board. TCL reset_property
     vivado -mode batch -source spi_program.tcl
 
 # Test
+I installed the LiteFury onto a very inexpensive PCIe to M.2 adapter to facilitate removal and replacement.
 <img src="IMG_20240207_075841590.jpg">
 
     lspci
