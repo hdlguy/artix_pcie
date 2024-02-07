@@ -28,25 +28,25 @@ module top (
 //    logic qspi_io3_i, qspi_io3_o, qspi_io3_t;
 //    logic qspi_ss_i,  qspi_ss_o,  qspi_ss_t;
     
-    logic [39:0]    M02_AXI_araddr;
-    logic [2:0]     M02_AXI_arprot;
-    logic           M02_AXI_arready;
-    logic           M02_AXI_arvalid;
-    logic [39:0]    M02_AXI_awaddr;
-    logic [2:0]     M02_AXI_awprot;
-    logic           M02_AXI_awready;
-    logic           M02_AXI_awvalid;
-    logic           M02_AXI_bready;
-    logic [1:0]     M02_AXI_bresp;
-    logic           M02_AXI_bvalid;
-    logic [31:0]    M02_AXI_rdata;
-    logic           M02_AXI_rready;
-    logic [1:0]     M02_AXI_rresp;
-    logic           M02_AXI_rvalid;
-    logic [31:0]    M02_AXI_wdata;
-    logic           M02_AXI_wready;
-    logic [3:0]     M02_AXI_wstrb;
-    logic           M02_AXI_wvalid;
+    logic [39:0]    M00_AXI_araddr;
+    logic [2:0]     M00_AXI_arprot;
+    logic           M00_AXI_arready;
+    logic           M00_AXI_arvalid;
+    logic [39:0]    M00_AXI_awaddr;
+    logic [2:0]     M00_AXI_awprot;
+    logic           M00_AXI_awready;
+    logic           M00_AXI_awvalid;
+    logic           M00_AXI_bready;
+    logic [1:0]     M00_AXI_bresp;
+    logic           M00_AXI_bvalid;
+    logic [31:0]    M00_AXI_rdata;
+    logic           M00_AXI_rready;
+    logic [1:0]     M00_AXI_rresp;
+    logic           M00_AXI_rvalid;
+    logic [31:0]    M00_AXI_wdata;
+    logic           M00_AXI_wready;
+    logic [3:0]     M00_AXI_wstrb;
+    logic           M00_AXI_wvalid;
     logic           axi_aclk, axi_aresetn;
    
 
@@ -61,25 +61,25 @@ module top (
         //
         .axi_aclk           (axi_aclk),
         .axi_aresetn        (axi_aresetn),
-        .M02_araddr         (M02_AXI_araddr),
-        .M02_arprot         (M02_AXI_arprot),
-        .M02_arready        (M02_AXI_arready),
-        .M02_arvalid        (M02_AXI_arvalid),
-        .M02_awaddr         (M02_AXI_awaddr),
-        .M02_awprot         (M02_AXI_awprot),
-        .M02_awready        (M02_AXI_awready),
-        .M02_awvalid        (M02_AXI_awvalid),
-        .M02_bready         (M02_AXI_bready),
-        .M02_bresp          (M02_AXI_bresp),
-        .M02_bvalid         (M02_AXI_bvalid),
-        .M02_rdata          (M02_AXI_rdata),
-        .M02_rready         (M02_AXI_rready),
-        .M02_rresp          (M02_AXI_rresp),
-        .M02_rvalid         (M02_AXI_rvalid),
-        .M02_wdata          (M02_AXI_wdata),
-        .M02_wready         (M02_AXI_wready),
-        .M02_wstrb          (M02_AXI_wstrb),
-        .M02_wvalid         (M02_AXI_wvalid)
+        .M00_AXI_araddr     (M00_AXI_araddr),
+        .M00_AXI_arprot     (M00_AXI_arprot),
+        .M00_AXI_arready    (M00_AXI_arready),
+        .M00_AXI_arvalid    (M00_AXI_arvalid),
+        .M00_AXI_awaddr     (M00_AXI_awaddr),
+        .M00_AXI_awprot     (M00_AXI_awprot),
+        .M00_AXI_awready    (M00_AXI_awready),
+        .M00_AXI_awvalid    (M00_AXI_awvalid),
+        .M00_AXI_bready     (M00_AXI_bready),
+        .M00_AXI_bresp      (M00_AXI_bresp),
+        .M00_AXI_bvalid     (M00_AXI_bvalid),
+        .M00_AXI_rdata      (M00_AXI_rdata),
+        .M00_AXI_rready     (M00_AXI_rready),
+        .M00_AXI_rresp      (M00_AXI_rresp),
+        .M00_AXI_rvalid     (M00_AXI_rvalid),
+        .M00_AXI_wdata      (M00_AXI_wdata),
+        .M00_AXI_wready     (M00_AXI_wready),
+        .M00_AXI_wstrb      (M00_AXI_wstrb),
+        .M00_AXI_wvalid     (M00_AXI_wvalid)
 );                
 //        //
 //        .qspi_io0_i         (qspi_io0_i),
@@ -146,25 +146,25 @@ module top (
         .S_AXI_ACLK    (axi_aclk),
         .S_AXI_ARESETN (axi_aresetn),
         //
-        .S_AXI_ARADDR  (M02_AXI_araddr ),
-        .S_AXI_ARPROT  (M02_AXI_arprot ),
-        .S_AXI_ARREADY (M02_AXI_arready),
-        .S_AXI_ARVALID (M02_AXI_arvalid),
-        .S_AXI_AWADDR  (M02_AXI_awaddr ),
-        .S_AXI_AWPROT  (M02_AXI_awprot ),
-        .S_AXI_AWREADY (M02_AXI_awready),
-        .S_AXI_AWVALID (M02_AXI_awvalid),
-        .S_AXI_BREADY  (M02_AXI_bready ),
-        .S_AXI_BRESP   (M02_AXI_bresp  ),
-        .S_AXI_BVALID  (M02_AXI_bvalid ),
-        .S_AXI_RDATA   (M02_AXI_rdata  ),
-        .S_AXI_RREADY  (M02_AXI_rready ),
-        .S_AXI_RRESP   (M02_AXI_rresp  ),
-        .S_AXI_RVALID  (M02_AXI_rvalid ),
-        .S_AXI_WDATA   (M02_AXI_wdata  ),
-        .S_AXI_WREADY  (M02_AXI_wready ),
-        .S_AXI_WSTRB   (M02_AXI_wstrb  ),
-        .S_AXI_WVALID  (M02_AXI_wvalid )
+        .S_AXI_ARADDR  (M00_AXI_araddr ),
+        .S_AXI_ARPROT  (M00_AXI_arprot ),
+        .S_AXI_ARREADY (M00_AXI_arready),
+        .S_AXI_ARVALID (M00_AXI_arvalid),
+        .S_AXI_AWADDR  (M00_AXI_awaddr ),
+        .S_AXI_AWPROT  (M00_AXI_awprot ),
+        .S_AXI_AWREADY (M00_AXI_awready),
+        .S_AXI_AWVALID (M00_AXI_awvalid),
+        .S_AXI_BREADY  (M00_AXI_bready ),
+        .S_AXI_BRESP   (M00_AXI_bresp  ),
+        .S_AXI_BVALID  (M00_AXI_bvalid ),
+        .S_AXI_RDATA   (M00_AXI_rdata  ),
+        .S_AXI_RREADY  (M00_AXI_rready ),
+        .S_AXI_RRESP   (M00_AXI_rresp  ),
+        .S_AXI_RVALID  (M00_AXI_rvalid ),
+        .S_AXI_WDATA   (M00_AXI_wdata  ),
+        .S_AXI_WREADY  (M00_AXI_wready ),
+        .S_AXI_WSTRB   (M00_AXI_wstrb  ),
+        .S_AXI_WVALID  (M00_AXI_wvalid )
     );    
 
 endmodule
