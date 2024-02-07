@@ -1,3 +1,3 @@
 # Artix-7 FPGA for RHS Research LiteFury M.2 card
-I just purchased one of these cards. I will use this design to test it.
+This folder contains a minimal x4 PCIe design for the LiteFury card.  It includes a specially modified compile.tcl that handles the non-standard PCIe lane ordering of this card.
 
