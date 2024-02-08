@@ -15,23 +15,25 @@
 int main(int argc,char** argv)
 {
     void* base_addr;
+    //char devstr[] = "/dev/xdma0_bypass";
+    char devstr[] = "/dev/mem";
 
-   int fd = open("/dev/mem",O_RDWR|O_SYNC);
+   int fd = open(devstr, O_RDWR|O_SYNC);
    if(fd < 0) {
-        fprintf(stderr,"Can't open /dev/mem, you must be root!\n");
+        fprintf(stderr,"Can't open %s, you must be root!\n", devstr);
     } else {
         base_addr = mmap(0,FPGA_SIZE,PROT_READ|PROT_WRITE,MAP_SHARED,fd,FPGA_BASE_ADDRESS);
         if(base_addr == NULL) fprintf(stderr,"Can't mmap\n");
     }
 
-    printf("FPGA_BASE_ADDRESS = 0x%08x, base_addr = %p\n", FPGA_BASE_ADDRESS, base_addr);
+    printf("FPGA_BASE_ADDRESS = 0x%08x, virtual base_addr = %p\n", FPGA_BASE_ADDRESS, base_addr);
 
     uint32_t *regptr = base_addr + FPGA_REG_OFFSET;
 
     printf("FPGA_ID = 0x%08x, FPGA_VERSION = 0x%08x\n", regptr[FPGA_ID], regptr[FPGA_VERSION]);
 
 
-
+/*
     // Test the scratch bram.
     uint32_t* write_data = malloc(TEST_RAM_SIZE);
     uint32_t* read_data  = malloc(TEST_RAM_SIZE);
@@ -51,6 +53,7 @@ int main(int argc,char** argv)
     fprintf(stdout, "scratch bram errors = %d\n", errors);
     free(write_data);
     free(read_data);
+*/
 
 
     munmap(base_addr,FPGA_SIZE);
