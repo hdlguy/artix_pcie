@@ -263,7 +263,10 @@ proc create_root_design { parentCell } {
 
   # Create instance: axi_bram_ctrl_0, and set properties
   set axi_bram_ctrl_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:axi_bram_ctrl:4.1 axi_bram_ctrl_0 ]
-  set_property CONFIG.SINGLE_PORT_BRAM {1} $axi_bram_ctrl_0
+  set_property -dict [list \
+    CONFIG.DATA_WIDTH {128} \
+    CONFIG.SINGLE_PORT_BRAM {1} \
+  ] $axi_bram_ctrl_0
 
 
   # Create instance: axi_smc, and set properties

@@ -33,7 +33,6 @@ int main(int argc,char** argv)
     printf("FPGA_ID = 0x%08x, FPGA_VERSION = 0x%08x\n", regptr[FPGA_ID], regptr[FPGA_VERSION]);
 
 
-/*
     // Test the scratch bram.
     uint32_t* write_data = malloc(TEST_RAM_SIZE);
     uint32_t* read_data  = malloc(TEST_RAM_SIZE);
@@ -53,7 +52,6 @@ int main(int argc,char** argv)
     fprintf(stdout, "scratch bram errors = %d\n", errors);
     free(write_data);
     free(read_data);
-*/
 
 
     munmap(base_addr,FPGA_SIZE);
