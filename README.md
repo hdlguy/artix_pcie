@@ -15,9 +15,10 @@ The PCIe lanes are wired in a non-standard way on this board. TCL reset_property
     vivado -mode batch -source spi_program.tcl
 
 # Test
-I installed the LiteFury onto a very inexpensive PCIe to M.2 adapter to facilitate removal and replacement.
+I installed the LiteFury onto a very inexpensive four lane PCIe to M.2 adapter to facilitate removal and replacement. The board functions correctly that way.
 <img src="IMG_20240207_075841590.jpg">
 
     lspci
 
+I also tried a one lane PCIe to M.2 adapter to test with the Raspberry Pi Compute Module 4 IO Board.
 
