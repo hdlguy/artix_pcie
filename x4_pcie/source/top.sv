@@ -14,25 +14,13 @@ module top (
     output  logic[3:0]  pcie_mgt_txp,
     input   logic       pcie_reset,
     output  logic       pcie_clkreq_l
-//    //
-//    inout   logic       qspi_io0_io,
-//    inout   logic       qspi_io1_io,
-//    inout   logic       qspi_io2_io,
-//    inout   logic       qspi_io3_io,
-//    inout   logic       qspi_ss_io
 );
-
-//    logic qspi_io0_i, qspi_io0_o, qspi_io0_t;
-//    logic qspi_io1_i, qspi_io1_o, qspi_io1_t;
-//    logic qspi_io2_i, qspi_io2_o, qspi_io2_t;
-//    logic qspi_io3_i, qspi_io3_o, qspi_io3_t;
-//    logic qspi_ss_i,  qspi_ss_o,  qspi_ss_t;
     
-    logic [39:0]    M00_AXI_araddr;
+    logic [31:0]    M00_AXI_araddr;
     logic [2:0]     M00_AXI_arprot;
     logic           M00_AXI_arready;
     logic           M00_AXI_arvalid;
-    logic [39:0]    M00_AXI_awaddr;
+    logic [31:0]    M00_AXI_awaddr;
     logic [2:0]     M00_AXI_awprot;
     logic           M00_AXI_awready;
     logic           M00_AXI_awvalid;
@@ -80,30 +68,7 @@ module top (
         .M00_AXI_wready     (M00_AXI_wready),
         .M00_AXI_wstrb      (M00_AXI_wstrb),
         .M00_AXI_wvalid     (M00_AXI_wvalid)
-);                
-//        //
-//        .qspi_io0_i         (qspi_io0_i),
-//        .qspi_io0_o         (qspi_io0_o),
-//        .qspi_io0_t         (qspi_io0_t),
-//        .qspi_io1_i         (qspi_io1_i),
-//        .qspi_io1_o         (qspi_io1_o),
-//        .qspi_io1_t         (qspi_io1_t),
-//        .qspi_io2_i         (qspi_io2_i),
-//        .qspi_io2_o         (qspi_io2_o),
-//        .qspi_io2_t         (qspi_io2_t),
-//        .qspi_io3_i         (qspi_io3_i),
-//        .qspi_io3_o         (qspi_io3_o),
-//        .qspi_io3_t         (qspi_io3_t),
-//        .qspi_ss_i          (qspi_ss_i),
-//        .qspi_ss_o          (qspi_ss_o),
-//        .qspi_ss_t          (qspi_ss_t)        
-//    );
-    
-//    IOBUF qspi_io0_iobuf (.I(qspi_io0_o), .IO(qspi_io0_io), .O(qspi_io0_i), .T(qspi_io0_t));
-//    IOBUF qspi_io1_iobuf (.I(qspi_io1_o), .IO(qspi_io1_io), .O(qspi_io1_i), .T(qspi_io1_t));
-//    IOBUF qspi_io2_iobuf (.I(qspi_io2_o), .IO(qspi_io2_io), .O(qspi_io2_i), .T(qspi_io2_t));
-//    IOBUF qspi_io3_iobuf (.I(qspi_io3_o), .IO(qspi_io3_io), .O(qspi_io3_i), .T(qspi_io3_t));
-//    IOBUF qspi_ss_iobuf  (.I(qspi_ss_o),  .IO(qspi_ss_io),  .O(qspi_ss_i),  .T(qspi_ss_t));
+);           
     
     assign pcie_clkreq_l = 1'b0;
 
@@ -112,13 +77,8 @@ module top (
     
     logic[3:0] led;
     logic[27:0] led_count;
-    always_ff @(posedge axi_aclk) begin
-        if (pcie_reset==0) begin
-            led_count <= 0;
-        end else begin
-            led_count <= led_count + 1;
-        end
-//        led_count <= led_count + 1;
+    always_ff @(posedge clk) begin
+        led_count <= led_count + 1;
         led <= led_count[27:24];
     end    
     assign ledn = ~led;
@@ -135,9 +95,10 @@ module top (
 
     assign slv_read[Nregs-1:3] = slv_reg[Nregs-1:3];
 
+    localparam int Npci_addr = 6; 
     axi_regfile_v1_0_S00_AXI #  (
         .C_S_AXI_DATA_WIDTH(32),
-        .C_S_AXI_ADDR_WIDTH(6) // 16 32-bit registers.
+        .C_S_AXI_ADDR_WIDTH(Npci_addr) // 16 32-bit registers.
     ) axi_regfile_inst (
         // register interface
         .slv_read(slv_read),
@@ -146,11 +107,11 @@ module top (
         .S_AXI_ACLK    (axi_aclk),
         .S_AXI_ARESETN (axi_aresetn),
         //
-        .S_AXI_ARADDR  (M00_AXI_araddr ),
+        .S_AXI_ARADDR  (M00_AXI_araddr[Npci_addr-1:0] ),
         .S_AXI_ARPROT  (M00_AXI_arprot ),
         .S_AXI_ARREADY (M00_AXI_arready),
         .S_AXI_ARVALID (M00_AXI_arvalid),
-        .S_AXI_AWADDR  (M00_AXI_awaddr ),
+        .S_AXI_AWADDR  (M00_AXI_awaddr[Npci_addr-1:0] ),
         .S_AXI_AWPROT  (M00_AXI_awprot ),
         .S_AXI_AWREADY (M00_AXI_awready),
         .S_AXI_AWVALID (M00_AXI_awvalid),

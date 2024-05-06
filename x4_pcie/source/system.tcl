@@ -134,7 +134,6 @@ xilinx.com:ip:util_ds_buf:2.2\
 xilinx.com:ip:blk_mem_gen:8.4\
 xilinx.com:ip:axi_bram_ctrl:4.1\
 xilinx.com:ip:smartconnect:1.0\
-xilinx.com:ip:xlconcat:2.1\
 xilinx.com:ip:system_ila:1.1\
 "
 
@@ -277,11 +276,6 @@ proc create_root_design { parentCell } {
   ] $axi_smc
 
 
-  # Create instance: xlconcat_0, and set properties
-  set xlconcat_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:xlconcat:2.1 xlconcat_0 ]
-  set_property CONFIG.NUM_PORTS {1} $xlconcat_0
-
-
   # Create instance: system_ila_0, and set properties
   set system_ila_0 [ create_bd_cell -type ip -vlnv xilinx.com:ip:system_ila:1.1 system_ila_0 ]
   set_property -dict [list \
@@ -306,7 +300,6 @@ connect_bd_intf_net -intf_net [get_bd_intf_nets xdma_0_M_AXI_LITE] [get_bd_intf_
   connect_bd_net -net util_ds_buf_IBUF_OUT [get_bd_pins util_ds_buf/IBUF_OUT] [get_bd_pins xdma_0/sys_clk]
   connect_bd_net -net xdma_0_axi_aclk [get_bd_pins xdma_0/axi_aclk] [get_bd_pins axi_smc/aclk] [get_bd_pins axi_bram_ctrl_0/s_axi_aclk] [get_bd_ports axi_aclk] [get_bd_pins system_ila_0/clk]
   connect_bd_net -net xdma_0_axi_aresetn [get_bd_pins xdma_0/axi_aresetn] [get_bd_pins axi_bram_ctrl_0/s_axi_aresetn] [get_bd_pins axi_smc/aresetn] [get_bd_ports axi_aresetn] [get_bd_pins system_ila_0/resetn]
-  connect_bd_net -net xlconcat_0_dout [get_bd_pins xlconcat_0/dout] [get_bd_pins xdma_0/usr_irq_req]
 
   # Create address segments
   assign_bd_address -offset 0x00000000 -range 0x00010000 -with_name SEG_M00_AXI_0_Reg -target_address_space [get_bd_addr_spaces xdma_0/M_AXI] [get_bd_addr_segs M00_AXI/Reg] -force

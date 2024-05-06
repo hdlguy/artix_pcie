@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date         : Mon May  6 09:44:31 2024
+| Date         : Mon May  6 12:40:14 2024
 | Host         : WD850X2TB running 64-bit Ubuntu 22.04.4 LTS
 | Command      : report_utilization -file ./results/utilization.rpt
 | Design       : top
@@ -32,8 +32,8 @@ Table of Contents
 +----------------------------+-------+-------+------------+-----------+-------+
 |          Site Type         |  Used | Fixed | Prohibited | Available | Util% |
 +----------------------------+-------+-------+------------+-----------+-------+
-| Slice LUTs                 | 31537 |     0 |          0 |     63400 | 49.74 |
-|   LUT as Logic             | 26759 |     0 |          0 |     63400 | 42.21 |
+| Slice LUTs                 | 31541 |     0 |          0 |     63400 | 49.75 |
+|   LUT as Logic             | 26763 |     0 |          0 |     63400 | 42.21 |
 |   LUT as Memory            |  4778 |     0 |          0 |     19000 | 25.15 |
 |     LUT as Distributed RAM |  3466 |     0 |            |           |       |
 |     LUT as Shift Register  |  1312 |     0 |            |           |       |
@@ -71,13 +71,13 @@ Table of Contents
 +--------------------------------------------+-------+-------+------------+-----------+-------+
 |                  Site Type                 |  Used | Fixed | Prohibited | Available | Util% |
 +--------------------------------------------+-------+-------+------------+-----------+-------+
-| Slice                                      | 11734 |     0 |          0 |     15850 | 74.03 |
-|   SLICEL                                   |  8050 |     0 |            |           |       |
-|   SLICEM                                   |  3684 |     0 |            |           |       |
-| LUT as Logic                               | 26759 |     0 |          0 |     63400 | 42.21 |
-|   using O5 output only                     |     1 |       |            |           |       |
-|   using O6 output only                     | 19294 |       |            |           |       |
-|   using O5 and O6                          |  7464 |       |            |           |       |
+| Slice                                      | 11724 |     0 |          0 |     15850 | 73.97 |
+|   SLICEL                                   |  8030 |     0 |            |           |       |
+|   SLICEM                                   |  3694 |     0 |            |           |       |
+| LUT as Logic                               | 26763 |     0 |          0 |     63400 | 42.21 |
+|   using O5 output only                     |     2 |       |            |           |       |
+|   using O6 output only                     | 19302 |       |            |           |       |
+|   using O5 and O6                          |  7459 |       |            |           |       |
 | LUT as Memory                              |  4778 |     0 |          0 |     19000 | 25.15 |
 |   LUT as Distributed RAM                   |  3466 |     0 |            |           |       |
 |     using O5 output only                   |     6 |       |            |           |       |
@@ -88,11 +88,11 @@ Table of Contents
 |     using O6 output only                   |   174 |       |            |           |       |
 |     using O5 and O6                        |  1134 |       |            |           |       |
 | Slice Registers                            | 39366 |     0 |          0 |    126800 | 31.05 |
-|   Register driven from within the Slice    | 24707 |       |            |           |       |
-|   Register driven from outside the Slice   | 14659 |       |            |           |       |
-|     LUT in front of the register is unused | 10350 |       |            |           |       |
-|     LUT in front of the register is used   |  4309 |       |            |           |       |
-| Unique Control Sets                        |  1365 |       |          0 |     15850 |  8.61 |
+|   Register driven from within the Slice    | 24753 |       |            |           |       |
+|   Register driven from outside the Slice   | 14613 |       |            |           |       |
+|     LUT in front of the register is unused | 10300 |       |            |           |       |
+|     LUT in front of the register is used   |  4313 |       |            |           |       |
+| Unique Control Sets                        |  1366 |       |          0 |     15850 |  8.62 |
 +--------------------------------------------+-------+-------+------------+-----------+-------+
 * * Note: Available Control Sets calculated as Slice * 1, Review the Control Sets Report for more information regarding control sets.
 
@@ -128,9 +128,9 @@ Table of Contents
 +-----------------------------+------+-------+------------+-----------+--------+
 |          Site Type          | Used | Fixed | Prohibited | Available |  Util% |
 +-----------------------------+------+-------+------------+-----------+--------+
-| Bonded IOB                  |    6 |     6 |          0 |       285 |   2.11 |
-|   IOB Master Pads           |    3 |       |            |           |        |
-|   IOB Slave Pads            |    3 |       |            |           |        |
+| Bonded IOB                  |    8 |     8 |          0 |       285 |   2.81 |
+|   IOB Master Pads           |    4 |       |            |           |        |
+|   IOB Slave Pads            |    4 |       |            |           |        |
 | Bonded IPADs                |   10 |    10 |          0 |        14 |  71.43 |
 | Bonded OPADs                |    8 |     8 |          0 |         8 | 100.00 |
 | PHY_CONTROL                 |    0 |     0 |          0 |         6 |   0.00 |
@@ -138,7 +138,7 @@ Table of Contents
 | OUT_FIFO                    |    0 |     0 |          0 |        24 |   0.00 |
 | IN_FIFO                     |    0 |     0 |          0 |        24 |   0.00 |
 | IDELAYCTRL                  |    0 |     0 |          0 |         6 |   0.00 |
-| IBUFDS                      |    0 |     0 |          0 |       274 |   0.00 |
+| IBUFDS                      |    1 |     1 |          0 |       274 |   0.36 |
 | GTPE2_CHANNEL               |    4 |     4 |          0 |         4 | 100.00 |
 | PHASER_OUT/PHASER_OUT_PHY   |    0 |     0 |          0 |        24 |   0.00 |
 | PHASER_IN/PHASER_IN_PHY     |    0 |     0 |          0 |        24 |   0.00 |
@@ -155,7 +155,7 @@ Table of Contents
 +------------+------+-------+------------+-----------+-------+
 |  Site Type | Used | Fixed | Prohibited | Available | Util% |
 +------------+------+-------+------------+-----------+-------+
-| BUFGCTRL   |    7 |     0 |          0 |        32 | 21.88 |
+| BUFGCTRL   |    8 |     0 |          0 |        32 | 25.00 |
 | BUFIO      |    0 |     0 |          0 |        24 |  0.00 |
 | MMCME2_ADV |    1 |     0 |          0 |         6 | 16.67 |
 | PLLE2_ADV  |    0 |     0 |          0 |         6 |  0.00 |
@@ -200,7 +200,7 @@ Table of Contents
 | RAMS32        |  1673 |   Distributed Memory |
 | CARRY4        |  1146 |           CarryLogic |
 | SRLC32E       |   753 |   Distributed Memory |
-| LUT1          |   724 |                  LUT |
+| LUT1          |   723 |                  LUT |
 | MUXF7         |   591 |                MuxFx |
 | FDSE          |   511 |         Flop & Latch |
 | FDCE          |   325 |         Flop & Latch |
@@ -210,13 +210,14 @@ Table of Contents
 | OBUF          |    13 |                   IO |
 | IBUF          |    11 |                   IO |
 | RAMS64E       |     9 |   Distributed Memory |
-| BUFG          |     6 |                Clock |
+| BUFG          |     7 |                Clock |
 | GTPE2_CHANNEL |     4 |                   IO |
 | SRLC16E       |     2 |   Distributed Memory |
 | RAMB18E1      |     2 |         Block Memory |
 | PCIE_2_1      |     1 | Specialized Resource |
 | MMCME2_ADV    |     1 |                Clock |
 | IBUFDS_GTE2   |     1 |                   IO |
+| IBUFDS        |     1 |                   IO |
 | GTPE2_COMMON  |     1 |                   IO |
 | BUFGCTRL      |     1 |                Clock |
 | BSCANE2       |     1 |               Others |
