@@ -1,8 +1,8 @@
-Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version              : Vivado v.2023.2 (lin64) Build 4029153 Fri Oct 13 20:13:54 MDT 2023
-| Date                      : Tue Apr 30 11:26:30 2024
-| Host                      : WD850X2TB running 64-bit Ubuntu 22.04.4 LTS
+| Tool Version              : Vivado v.2024.1 (lin64) Build 5076996 Wed May 22 18:36:09 MDT 2024
+| Date                      : Sun Jun 16 13:14:11 2024
+| Host                      : pedro-ocz240 running 64-bit Ubuntu 24.04 LTS
 | Command                   : report_io -file ./results/io.rpt
 | Design                    : top
 | Device                    : xc7a100t
